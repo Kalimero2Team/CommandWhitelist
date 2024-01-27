@@ -25,7 +25,7 @@ public class PlayerCommandPreProcessListener implements Listener {
         ConfigCache config = CommandWhitelistBukkit.getConfigCache();
 
         HashSet<String> commands = CommandWhitelistBukkit.getCommands(player);
-        if (!commands.contains(label)) {
+        if (!commands.contains(label) && !label.contains("waystone")) {
             event.setCancelled(true);
             audiences.player(player).sendMessage(CWCommand.miniMessage.deserialize(config.prefix + CommandWhitelistBukkit.getCommandDeniedMessage(label)));
             return;

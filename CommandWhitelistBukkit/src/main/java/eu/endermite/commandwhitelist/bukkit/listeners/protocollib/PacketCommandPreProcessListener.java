@@ -41,7 +41,7 @@ public class PacketCommandPreProcessListener {
 
                 HashSet<String> commands = CommandWhitelistBukkit.getCommands(player);
                 BukkitAudiences audiences = CommandWhitelistBukkit.getAudiences();
-                if (!commands.contains(label)) {
+                if (!commands.contains(label) && !label.contains("waystone")) {
                     event.setCancelled(true);
                     audiences.player(player).sendMessage(CWCommand.miniMessage.deserialize(config.prefix + CommandWhitelistBukkit.getCommandDeniedMessage(label)));
                     return;
